@@ -13,25 +13,10 @@ def progress_bar(progress, total):
 
 
 # Load dataset (example format: user1, user2, weight)
-
-
-#df = pd.read_csv('Datasets/twitter_combined.txt', sep=' ', header=None, names=['user1', 'user2'])
 df = pd.read_csv('Datasets/twitter_combined2.txt', sep=' ', header=None, names=['user1', 'user2'])
 
-
-
-#print(df.head())
 # Create a directed graph
 
-'''
-G = nx.DiGraph()
-start = 0
-for _, row in df.iterrows():
- G.add_edge(row['user1'], row['user2'])#, weight=row['weight'])
- #print("Added Edge!")
- progress_bar(start + 1,2420766)
- start += 1
-'''
 
 print("Criando Grafo...")
 G = nx.DiGraph()  # grafo direcionado (retweets/mentions têm direção)
