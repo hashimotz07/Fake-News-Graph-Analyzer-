@@ -3,7 +3,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from cdlib import algorithms
 import random
-
 import numpy as np
 
 import matplotlib.cm as cm
