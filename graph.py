@@ -13,7 +13,7 @@ def progress_bar(progress, total):
 
 
 # Load dataset (example format: user1, user2, weight)
-df = pd.read_csv('Datasets/twitter_combined2.txt', sep=' ', header=None, names=['user1', 'user2'])
+df = pd.read_csv('Datasets/twitter_combined.txt', sep=' ', header=None, names=['user1', 'user2'])
 
 # Create a directed graph
 
@@ -36,7 +36,8 @@ for _, row in df.iterrows():
 # Compute PageRank
 pagerank = nx.pagerank(G, alpha=0.85)
 sorted_pagerank = dict(sorted(pagerank.items(), key=lambda item: item[1], reverse=True))
-print(sorted_pagerank)
+print("Top 10 PageRank nodes:")
+print(dict(list(sorted_pagerank.items())[:10]))
 
 # Detect communities
 from networkx.algorithms.community import greedy_modularity_communities
@@ -49,10 +50,10 @@ print("Created Communities")
 pos = nx.spring_layout(G, seed=42)  # This uses a force-directed layout (change seed for different results)
 
 # Draw Graph
-#plt.figure(figsize=(10, 7))
+plt.figure(figsize=(10, 7))
 print("Figure Size Set")
-edge_labels = nx.get_edge_attributes(G, 'weight')
+#edge_labels = nx.get_edge_attributes(G, 'weight')
 nx.draw(G, pos, with_labels=False, node_size=20)
-nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
+#nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
 print("Drew Graph")
 plt.show()
